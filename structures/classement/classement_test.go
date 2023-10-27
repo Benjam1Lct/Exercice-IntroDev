@@ -23,7 +23,7 @@ func TestExemple(t *testing.T) {
 
 func TestVide(t *testing.T) {
 	res := classement([]etudiant{})
-	attendu := ""
+	attendu := "" 
 	if res != attendu {
 		t.Error("Sur un tableau vide, votre programme retourne '", res, "'")
 	}
