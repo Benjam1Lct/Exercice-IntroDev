@@ -14,7 +14,7 @@ func TestExemple(t *testing.T) {
 		"2. Hadj-Rabia Nassim\n" +
 		"2. Tamzalit Dalila\n" +
 		"4. Jezequel Loïg\n" +
-		"4. Jezequel Maël\n"
+		"4. Jezequel Maël\n" 
 	if res != attendu {
 		t.Error("Votre affichage donne :\n", res,
 			"\nEt on attendait :\n", attendu)
