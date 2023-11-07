@@ -23,5 +23,29 @@ Votre fonction devra pouvoir calculer U(1000) en moins de 2 secondes
 */
 
 func terme(n int) (un int) {
-	return
+	memo := make(map[int]int)
+
+	var computeTerm func(int) int
+	computeTerm = func(n int) int {
+		if val, ok := memo[n]; ok {
+			return val
+		}
+
+		var un int
+		if n == 0 {
+			un = 1
+		} else {
+			precedent := computeTerm(n - 1)
+			if precedent > 0 && 100%precedent == 0 {
+				un = precedent - 1
+			} else {
+				un = (precedent + 11) % 100
+			}
+		}
+
+		memo[n] = un
+		return un
+	}
+
+	return computeTerm(n)
 }

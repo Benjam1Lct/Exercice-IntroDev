@@ -1,7 +1,7 @@
 package suiteparam
 
 /*
-On considère un ensemble de suites définies par U(n) = 2 * U(n-1) + U(0), chaque U(0) possible définissant une suite de cet ensemble. 
+On considère un ensemble de suites définies par U(n) = 2 * U(n-1) + U(0), chaque U(0) possible définissant une suite de cet ensemble.
 La fonction termeparam doit calculer le n-ième terme de la suite telle que U(0) = n.
 
 Pour cet exercice, les boucles for sont interdites.
