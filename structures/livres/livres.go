@@ -1,5 +1,7 @@
 package livres
 
+import "sort"
+
 /*
 On dispose d'une structure de données permettant de réprésenter des livres avec un titre, un prix et un nombre de page.
 
@@ -19,4 +21,14 @@ type livre struct {
 	numPages int
 }
 
-func trier(tab []livre, parPrix bool) {}
+func trier(tab []livre, parPrix bool) {
+	if parPrix {
+		sort.Slice(tab, func(i, j int) bool {
+			return tab[i].prix < tab[j].prix
+		})
+	} else {
+		sort.Slice(tab, func(i, j int) bool {
+			return tab[i].numPages > tab[j].numPages
+		})
+	}
+}

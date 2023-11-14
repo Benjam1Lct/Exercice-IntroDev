@@ -24,5 +24,10 @@ type livre struct {
 }
 
 func trouver(tab []livre, numPages int) (l livre, trouve bool) {
-	return
+	for i := 0; i < len(tab); i++ {
+		if tab[i].numPages == numPages {
+			return tab[i], true
+		}
+	}
+	return livre{}, false
 }

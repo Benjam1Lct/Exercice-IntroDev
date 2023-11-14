@@ -1,5 +1,7 @@
 package classer
 
+import "fmt"
+
 /*
 La fonction classer doit trier un tableau d'étudiants (tels que définis) ci-dessous
 de celui qui a la meilleur moyenne (la plus élevée) à celui qui a la plus mauvaise
@@ -25,5 +27,26 @@ type etudiant struct {
 }
 
 func classer(promo []etudiant) (classement []etudiant) {
+	var n int = len(promo)
+	var max int
+	for i := 0; i < n; i++ {
+		max = i
+		for j := i + 1; j < n; j++ {
+			if promo[j].moyenne > promo[max].moyenne {
+				max = j
+			} else if promo[j].moyenne == promo[max].moyenne {
+				if promo[j].nom < promo[max].nom {
+					max = j
+				} else if promo[j].nom == promo[max].nom {
+					if promo[j].prenom < promo[max].prenom {
+						max = j
+					}
+				}
+			}
+		}
+		promo[i], promo[max] = promo[max], promo[i]
+	}
+	classement = promo
+	fmt.Println(classement)
 	return classement
 }
