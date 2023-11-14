@@ -30,5 +30,8 @@ type element struct {
 }
 
 func longueur(c chaine) (l int) {
+	for e := c.debut; e != nil; e = e.next {
+		l++
+	}
 	return l
 }
