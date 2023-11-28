@@ -1,7 +1,8 @@
 package queue
 
 /*
-On considère la structure de file d'attente (queue) définie ci-dessous. Une queue contient un certain nombre de places (sa taille) et est définie par la dernière place dans cette queue.
+On considère la structure de file d'attente (queue) définie ci-dessous. Une queue contient un certain nombre de places (sa taille)
+et est définie par la dernière place dans cette queue.
 Chaque place est occupée par une personne et est reliée à la place précédente dans la queue.
 Ainsi, de place en place, on peut reconstituer toute la queue.
 Quand une nouvelle personne s'ajoute à la queue, elle prend une nouvelle place à la fin de celle-ci.
@@ -36,5 +37,13 @@ type personne struct {
 }
 
 func (q *queue) premier() (p personne) {
-	return
+	if q.fin == nil {
+		return p
+	}
+	for i := q.fin; i != nil; i = i.precedant {
+		if i.precedant == nil {
+			p = i.occupant
+		}
+	}
+	return p
 }

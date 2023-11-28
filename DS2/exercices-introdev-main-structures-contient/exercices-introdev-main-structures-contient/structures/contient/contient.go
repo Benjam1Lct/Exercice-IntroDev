@@ -1,11 +1,11 @@
 package contient
 
 /*
-On dispose d'une structure de liste chaînée contenent des éléments avec chacun une valeur. On souhaite, étant donnée une liste, savoir si elle contient une valeur particulière (savoir si un de ses éléments a cette valeur) grâce à la méthode contient. Cette méthode ne doit pas modifier la liste.
+On dispose d'une structure de liste chaînée contenant des éléments avec chacun une valeur. On souhaite, étant donné une liste, savoir si elle contient une valeur particulière (savoir si un de ses éléments a cette valeur) grâce à la méthode contient. Cette méthode ne doit pas modifier la liste.
 
-On considère qu'il n'y a jamais de cycles dans nos listes : en allant de suivant en suivant on arrive obligatoirement au bout d'un moment sur un dernier élément (dont le suivant est nil).
+On considère qu'il n'y a jamais de cycles dans nos listes : en allant de suivant en suivant, on arrive obligatoirement au bout d'un moment sur un dernier élément (dont le suivant est nil).
 
-Pour cet exercice les boucles for sont interdites.
+Pour cet exercice, les boucles for sont interdites.
 
 # Entrées
 - l : une liste
@@ -28,5 +28,15 @@ type element struct {
 }
 
 func (l liste) contient(v int) (existe bool) {
-	return
+	return l.debut != nil && l.debut.contientRecursive(v)
+}
+
+func (e *element) contientRecursive(v int) (existe bool) {
+	if e == nil {
+		return false
+	}
+	if e.valeur == v {
+		return true
+	}
+	return e.suivant.contientRecursive(v)
 }
