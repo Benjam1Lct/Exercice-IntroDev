@@ -1,5 +1,7 @@
 package classement
 
+import "fmt"
+
 /*
 La fonction classement doit, étant donné un tableau d'étudiants (supposé trié
 par ordre de moyenne, de nom de famille en cas d'égalité, de prénom en cas de
@@ -44,5 +46,23 @@ type etudiant struct {
 }
 
 func classement(classe []etudiant) (affichage string) {
-	return affichage
+	if classe == nil {
+		return affichage
+	} else {
+		position := 1
+		true_position := 0
+		for i := 0; i < len(classe); i++ {
+			nom := classe[i].nom
+			prenom := classe[i].prenom
+			affichage = affichage + fmt.Sprint(position) + "." + " " + nom + " " + prenom + "\n"
+			if i < len(classe)-1 && classe[i+1].moyenne < classe[i].moyenne {
+				position = position + 1 + true_position
+				true_position = 0
+			} else {
+				true_position++
+			}
+
+		}
+		return affichage
+	}
 }
