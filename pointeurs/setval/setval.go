@@ -11,4 +11,6 @@ La fonction set fixe la valeur stockée à l'adresse indiquée par un pointeur �
 2022-2023, test 1, exercice 0
 */
 
-func set(ptr *int, x int) {}
+func set(ptr *int, x int) {
+	*ptr = x
+}
